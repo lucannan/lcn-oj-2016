@@ -39,6 +39,7 @@ public class __9_6AddParen {
     }
 
 
+
     public static void main(String[] args) {
         int count = 5;
         char[] str = new char[count*2];
