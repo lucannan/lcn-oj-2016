@@ -11,6 +11,8 @@ import java.util.*;
  * 如果其中有一些点是禁区，机器人不能进入。设计一种算法，找出一条路径
  * Created by LCN on 2016/3/27.
  */
+
+@SuppressWarnings("all")
 public class __9_2GetPath {
 
     /**
@@ -92,15 +94,50 @@ public class __9_2GetPath {
         return success;
     }
 
+
+    /**
+     * 计算可以走的所有的可能性
+     * @param x
+     * @param y
+     * @param path
+     * @param paths
+     * @return
+     */
+    public static void getPathDp(int x, int y, List<MyPoint> path, List<List<MyPoint>> paths) {
+        if (x < 0 || y < 0){
+            return;
+        }
+        MyPoint p = new MyPoint(x,y);
+        path.add(p);
+
+        if (x == 0 && y == 0){
+            paths.add(path);
+            return;
+        }
+        getPathDp(x-1,y,path,paths); //往左走
+        getPathDp(x,y-1,path,paths);//往下走
+    }
+
+    @Test
+    public void testGetPathDp2(){
+        List<MyPoint> path = new ArrayList<MyPoint>();
+        List<List<MyPoint>> paths = new ArrayList<List<MyPoint>>();
+
+        getPathDp(5,6,path,paths);
+        System.out.println(paths.size());
+    }
+
     public static void main(String[] args) {
         List<MyPoint> path = new ArrayList<MyPoint>();
-        boolean success = getPath(5, 5, path);
+        boolean success = getPath(5,6, path);
 
         System.out.println(success);
         for (MyPoint p : path) {
             System.out.println(p);
         }
     }
+
+
 
 
     @Test
