@@ -57,5 +57,15 @@ public class __2_1DeleteDups {
 
 class LinkedListNode {
     int data;
+    LinkedListNode before;
     LinkedListNode next;
+
+    public LinkedListNode() {
+    }
+
+    public LinkedListNode(int data, LinkedListNode before, LinkedListNode next) {
+        this.data = data;
+        this.before = before;
+        this.next = next;
+    }
 }
