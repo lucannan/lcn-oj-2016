@@ -63,4 +63,6 @@ public class Demo {
         String[] arrs = str.split("\\d+");
         System.out.println(Arrays.toString(arrs));
     }
+
+
 }

@@ -8,7 +8,11 @@ import CN.EDU.SEU.几个常用数据结构.Stack;
  * Created by LCN on 2016/3/28.
  */
 public class __2_7IsPalindrome {
-
+    /**
+     * 迭代法
+     * @param head
+     * @return
+     */
     public static boolean isPalindrome(LinkedListNode head) {
 
         LinkedListNode fast = head;
@@ -38,7 +42,12 @@ public class __2_7IsPalindrome {
         return true;
     }
 
-
+    /***
+     * 递归方法
+     * @param head
+     * @param length
+     * @return
+     */
     public static Result isPalindromeRecurse(LinkedListNode head, int length) {
         if (head == null || length == 0) {
             return new Result(null, true);
@@ -58,11 +67,26 @@ public class __2_7IsPalindrome {
         }
     }
 
+    /**
+     * 计算链表的长度
+     * @param node
+     * @return
+     */
+    public static int listSize(LinkedListNode node){
+        int count = 0;
+        LinkedListNode temp = node;
+        while (temp!=null){
+            count++;
+            temp = temp.next;
+        }
 
-//    public static boolean isPalindrome(LinkedListNode head) {
-//        Result result = isPalindromeRecurse(head, listSize(head));
-//        return result.result;
-//    }
+        return count;
+    }
+
+    public static boolean isPalindrome2(LinkedListNode head){
+        Result result = isPalindromeRecurse(head,listSize(head));
+        return result.result;
+    }
 
 
     public static void main(String[] args) {
