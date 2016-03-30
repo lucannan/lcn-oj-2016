@@ -1,26 +1,32 @@
 package CN.EDU.SEU;
 
-import java.util.*;
-
 /**
  * Created by LCN on 2016/3/22.
  */
 public class App {
 
-    public static void App() {
-        System.out.println("hello world");
-        new App().test();
-    }
+    @org.junit.Test
+    public void test() {
+        String[] totalTypeArr = {"IQC", "Test-xx","Test-232"};
+        for (int i = 0; i < totalTypeArr.length; i++) {
+            totalTypeArr[i] = totalTypeArr[i].replace("-", "_");
+            System.out.println(totalTypeArr[i]);
+        }
+        boolean isReplaced = false;
+        for (int i = 0; i < totalTypeArr.length; i++) {
+            if (!isReplaced) {
+                if (totalTypeArr[i].matches("Test_.+")) {
+                    totalTypeArr[i] = "Test_TEST";
+                    isReplaced = true;
+                }
+            }
 
-    public void test(){
+            System.out.println(totalTypeArr[i]);
+        }
 
-    }
-
-    public static void main(String[] args) {
-        App();
     }
 }
 
 abstract class Test {
-   abstract void test();
+    abstract void test();
 }
