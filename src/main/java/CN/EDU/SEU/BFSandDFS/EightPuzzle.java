@@ -1,11 +1,13 @@
 package CN.EDU.SEU.BFSandDFS;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.util.*;
 import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  * 八数码问题：
- *
+ * <p>
  * Created by LCN on 2016/4/4.
  */
 public class EightPuzzle {
@@ -17,6 +19,7 @@ public class EightPuzzle {
     private Map<String, String> path = new HashMap<>();//存储路径
 
     private int step = 0; //深度
+
     //将数组装换为String
     private String convertToStrState(int[][] matrix) {
         StringBuilder sb = new StringBuilder();
@@ -28,6 +31,7 @@ public class EightPuzzle {
 
         return sb.toString();
     }
+
     //将String装换为数组
     private int[][] convertToMatrix(String state) {
         int n = 3;
@@ -59,6 +63,7 @@ public class EightPuzzle {
         }
         return ans;
     }
+
     //判断是否可以由初始状态下的8数码转换到目标状态
     public boolean isCanSolve(int[][] startMatrix) {
         return countInverseNumber(startMatrix) % 2 == countInverseNumber(targetMatrix);
@@ -106,6 +111,8 @@ public class EightPuzzle {
                     for (int j = 0; j < 3; j++) {
                         System.arraycopy(currentMatrix[j], 0, newMatrix[j], 0, currentMatrix[j].length);
                     }
+//                    可以直接使用克隆
+//                    newMatrix = currentMatrix.clone();
                     int temp = newMatrix[newx][newy];
                     newMatrix[newx][newy] = newMatrix[curx][cury];
                     newMatrix[curx][cury] = temp;
@@ -121,6 +128,72 @@ public class EightPuzzle {
         }
     }
 
+
+
+
+
+    //bfs搜索目标
+    public int bfs2(int[][] startState) {
+        if (!isCanSolve(startState)) {
+            System.out.println("开始状态到目标状态无解！");
+            return -1;
+        }
+        Queue<String> queue = new LinkedBlockingDeque<>();
+        queue.add(convertToStrState(startState));
+        hashState.add(convertToStrState(startState));
+        path.put(convertToStrState(startState), null);
+        Queue<Integer> depths = new ArrayDeque<>();
+        depths.add(0);
+        while (!queue.isEmpty()) {
+            String currentState = queue.poll();
+            int[][] currentMatrix = convertToMatrix(currentState);
+            int currentDepth = depths.poll();
+            if (currentState.equals(targetState)) {
+                return currentDepth;
+            }
+
+            int curx = 0;
+            int cury = 0;
+            //查找0的位置
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (currentMatrix[i][j] == 0) {
+                        curx = i;
+                        cury = j;
+                        break;
+                    }
+                }
+            }
+
+            String newState = ""; //记录新的状态
+            int[][] newMatrix = new int[3][3];
+
+            for (int i = 0; i < 4; i++) {
+                int newx = curx + dx[i];
+                int newy = cury + dy[i];
+
+                if (newx <= 2 && newx >= 0 && newy <= 2 && newy >= 0) {
+                    for (int j = 0; j < 3; j++) {
+                        System.arraycopy(currentMatrix[j], 0, newMatrix[j], 0, currentMatrix[j].length);
+                    }
+//                    可以直接使用克隆
+//                    newMatrix = currentMatrix.clone();
+                    int temp = newMatrix[newx][newy];
+                    newMatrix[newx][newy] = newMatrix[curx][cury];
+                    newMatrix[curx][cury] = temp;
+
+                    newState = convertToStrState(newMatrix);
+                    if (!hashState.contains(newState)) {
+                        path.put(newState, currentState);
+                        queue.add(newState);
+                        depths.add(currentDepth + 1);
+                        hashState.add(newState);
+                    }
+                }
+            }
+        }
+        return -1;
+    }
 
     public void printPath() {
         Stack<String> stack = new Stack<>();
@@ -156,7 +229,8 @@ public class EightPuzzle {
                 startMatrix[i][j] = scanner.nextInt();
             }
         }
-        eightPuzzle.bfs(startMatrix);
+        System.out.println(eightPuzzle.bfs2(startMatrix));
+
         eightPuzzle.printPath();
     }
 
