@@ -66,8 +66,7 @@ public class EightPuzzle {
     }
 
     public void bfs(int[][] startState) {
-        if(!isCanSolve(startState))
-        {
+        if (!isCanSolve(startState)) {
             System.out.println("开始状态到目标状态无解！");
         }
 
@@ -157,10 +156,8 @@ public class EightPuzzle {
                 startMatrix[i][j] = scanner.nextInt();
             }
         }
-
         eightPuzzle.bfs(startMatrix);
         eightPuzzle.printPath();
-
     }
 
 }
