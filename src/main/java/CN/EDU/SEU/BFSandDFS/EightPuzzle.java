@@ -4,19 +4,20 @@ import java.util.*;
 import java.util.concurrent.LinkedBlockingDeque;
 
 /**
+ * 八数码问题：
+ *
  * Created by LCN on 2016/4/4.
  */
 public class EightPuzzle {
     private String targetState = "123456780"; //目标状态
     private int[][] targetMatrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 0}};//目标矩阵
     private Set<String> hashState = new HashSet<>();
-    private int[] dx = {-1, 0, 1, 0};
+    private int[] dx = {-1, 0, 1, 0}; //对应上下左右的四种状态
     private int[] dy = {0, 1, 0, -1};
-    private Map<String, String> path = new HashMap<>();
+    private Map<String, String> path = new HashMap<>();//存储路径
 
-    private int step = 0;
-
-    //    private int[] dy = {}
+    private int step = 0; //深度
+    //将数组装换为String
     private String convertToStrState(int[][] matrix) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < matrix[0].length; i++) {
@@ -27,7 +28,7 @@ public class EightPuzzle {
 
         return sb.toString();
     }
-
+    //将String装换为数组
     private int[][] convertToMatrix(String state) {
         int n = 3;
         int[][] matrix = new int[3][3];
@@ -48,7 +49,6 @@ public class EightPuzzle {
                 }
             }
         }
-
         int ans = 0;
         for (int i = 0; i < size; i++) {
             for (int j = i + 1; j < size; j++) {
@@ -57,19 +57,19 @@ public class EightPuzzle {
                 }
             }
         }
-
         return ans;
     }
-
+    //判断是否可以由初始状态下的8数码转换到目标状态
     public boolean isCanSolve(int[][] startMatrix) {
         return countInverseNumber(startMatrix) % 2 == countInverseNumber(targetMatrix);
     }
 
+    //bfs搜索目标
     public void bfs(int[][] startState) {
         if (!isCanSolve(startState)) {
             System.out.println("开始状态到目标状态无解！");
+            return;
         }
-
         Queue<String> queue = new LinkedBlockingDeque<>();
         queue.add(convertToStrState(startState));
         hashState.add(convertToStrState(startState));

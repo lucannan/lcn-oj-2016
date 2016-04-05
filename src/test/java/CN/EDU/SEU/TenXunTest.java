@@ -1,5 +1,8 @@
 package CN.EDU.SEU;
 
+import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
+
 /**
  * Created by LCN on 2016/4/2.
  */
@@ -15,12 +18,12 @@ public class TenXunTest {
         if (i == arr.length - 1 && j == arr[0].length - 1) {
             return arr[i][j];
         }
-        if (cacheData[i][j] != -1){
+        if (cacheData[i][j] != -1) {
             return cacheData[i][j];
         }
 
-        int retRight = dfs(i + 1, j, arr,cacheData);    //右
-        int retDown = dfs(i, j + 1, arr,cacheData);     //下
+        int retRight = dfs(i + 1, j, arr, cacheData);    //右
+        int retDown = dfs(i, j + 1, arr, cacheData);     //下
 
         if (retRight < retDown) {
             cacheData[i][j] = arr[i][j] + retDown;
@@ -31,18 +34,23 @@ public class TenXunTest {
     }
 
     public static void main(String[] args) {
-        int[][] arrdata = {{1, 2, 3, 4}, {1, 2, 3, 4}, {1, 2, 3, 4}, {1, 2, 3, -1},{1, 2, 3, -1}};
-//        int[][] arrdata2 = {{0, 0, 3, 0}, {0, 0, 3, 4}, {0, 1, 1, 0}, {0, 0, 0, 4}};
-        int[][] cacheData = new int[5][4];
-
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                cacheData[i][j] = -1;
-            }
+//        int[][] arrdata = {{1, 2, 3, 4}, {1, 2, 3, 4}, {1, 2, 3, 4}, {1, 2, 3, -1}, {1, 2, 3, -1}};
+////        int[][] arrdata2 = {{0, 0, 3, 0}, {0, 0, 3, 4}, {0, 1, 1, 0}, {0, 0, 0, 4}};
+//        int[][] cacheData = new int[5][4];
+//
+//        for (int i = 0; i < 4; i++) {
+//            for (int j = 0; j < 4; j++) {
+//                cacheData[i][j] = -1;
+//            }
+//        }
+//        int[][] arrTest = {{1, 3, 4, 5}, {1, 3, 4, 5}, {1, 3, 4, 5}, {1, 3, 4, 5}};
+        Queue<String> queue = new ArrayBlockingQueue<String>(2);
+        queue.add("hello");
+        queue.add("hello");
+        while (!queue.isEmpty()){
+            System.out.println(queue.poll());
         }
-
-
-        System.out.println(dfs(0,0,arrdata,cacheData));
+//        System.out.println(dfs(0, 0, arrdata, cacheData));
 //        for (int i = 0; i < 4; i++) {
 //            for (int j = 0; j < 4; j++) {
 //                cacheData[i][j] = -1;
