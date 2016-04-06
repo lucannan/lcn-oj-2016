@@ -86,7 +86,7 @@ public class Main {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext()) {
             BottleState beginState = new BottleState(new int[]{10, 0, 0, 0});
@@ -96,6 +96,7 @@ public class Main {
             int bottom4 = scanner.nextInt();
             BottleState endState = new BottleState(new int[]{bottom1, bottom2, bottom3, bottom4});
             System.out.println(Bottlebfs(beginState, endState));
+
         }
     }
 
