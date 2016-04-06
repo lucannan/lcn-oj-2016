@@ -166,7 +166,7 @@ class BottleState {
                 if (!visited.contains(nextState)) {
                     depths.add(currentDepth + 1);
                     queue.add(nextState);
-                    //儿子记住父亲
+                    //儿子记住父亲  hash前面的值不能被后面的值覆盖
                     path.put(nextState, currentState);
                 }
             }
