@@ -5,10 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * clone方法基本的数据类型可以使用
  * Created by LCN on 2016/4/6.
  */
 public class leetcode__133 {
-
+    public static void main(String[] args) {
+    }
 }
 
 class UndirectedGraphNode {
@@ -37,4 +39,5 @@ class Solution {
         }
         return map.get(node);
     }
+
 }
