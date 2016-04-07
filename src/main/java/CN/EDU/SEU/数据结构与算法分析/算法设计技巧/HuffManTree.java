@@ -1,10 +1,9 @@
 package CN.EDU.SEU.数据结构与算法分析.算法设计技巧;
 
-import com.sun.jmx.remote.internal.ArrayQueue;
-
 import java.util.*;
 
 /**
+ * huffman编码树实现
  * Created by LCN on 2016/4/7.
  */
 public class HuffManTree {
@@ -89,7 +88,7 @@ public class HuffManTree {
     }
 
     //根据树来重建链表
-    public static List<Node> breadFirst(Node root) {
+    public static List<Node> breadthFirst(Node root) {
         Queue<Node> queue = new ArrayDeque<>();
         List<Node> list = new ArrayList<>();
         if (root != null) {
@@ -116,9 +115,11 @@ public class HuffManTree {
             Node base = nodes.get(start);
             int i = start;
             int j = end; //左后一个
-            while (i < j) {
-                while (i < j && nodes.get(++i).weight > base.weight) ;
-                while (j > start & nodes.get(--j).weight <= base.weight) ;
+            while (true) {
+                //找到大于分界值的元素的索引，或i已经到了end处
+                while (i < end && nodes.get(++i).weight >= base.weight) ;
+                //找到小于分界值的元素的索引，或j已经到了start处
+                while (j > start && nodes.get(--j).weight <= base.weight) ;
                 if (i < j) {
                     swap(nodes, i, j);
                 } else {
@@ -140,13 +141,13 @@ public class HuffManTree {
 
     public static void main(String[] args) {
         List<Node> nodes = new ArrayList<>();
-        nodes.add(new Node("A" , 40));
-        nodes.add(new Node("B" , 8));
-        nodes.add(new Node("C" , 10));
-        nodes.add(new Node("D" , 30));
-        nodes.add(new Node("E" , 10));
-        nodes.add(new Node("F" , 2));
+        nodes.add(new Node("A", 40));
+        nodes.add(new Node("B", 8));
+        nodes.add(new Node("C", 10));
+        nodes.add(new Node("D", 30));
+        nodes.add(new Node("E", 10));
+        nodes.add(new Node("F", 2));
         Node root = createTree(nodes);
-        System.out.println(breadFirst(root));
+        System.out.println(breadthFirst(root));
     }
 }
