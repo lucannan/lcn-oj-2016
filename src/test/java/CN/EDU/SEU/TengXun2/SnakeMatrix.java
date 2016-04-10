@@ -53,7 +53,7 @@ public class SnakeMatrix {
      * @return
      */
     public int getLevByPosition(int i,int j){
-        int mid = (int)index/2;
+        int mid = index /2;
         int tempi,tempj;
         if((i+1)>mid){
             tempi = index-i-1;
@@ -103,7 +103,7 @@ public class SnakeMatrix {
             //这一层的第一行
             add = j-lev+1;
         }else{//中间行
-            if(j>((int)index/2)){
+            if(j>(index /2)){
                 add = levEdge + i-lev;
             }else{
                 add = levEdge + levEdge-2 +levEdge+(index-lev-i-1);

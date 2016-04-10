@@ -186,7 +186,7 @@ public class DevideAndConquer {
         }
 
         Point[] S = new Point[testData.size()];
-        S = (Point[]) testData.toArray(S);
+        S = testData.toArray(S);
 
         for (int i = 0; i < S.length; i++) {
             System.out.println("(" + S[i].getX() + ", " + S[i].getY() + ")");
