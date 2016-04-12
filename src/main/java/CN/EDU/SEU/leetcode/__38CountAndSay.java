@@ -7,7 +7,7 @@ package CN.EDU.SEU.leetcode;
  */
 public class __38CountAndSay {
 
-    public String countAndSay(int n) {
+    public static String countAndSay(int n) {
         if (n <= 0) {
             return "";
         } else if (n == 1) {
@@ -17,7 +17,7 @@ public class __38CountAndSay {
         } else {
             String str = "11";
             StringBuilder sb = new StringBuilder();
-            for (int i = 3; i < n; i++) {
+            for (int i = 3; i <= n; i++) {
                 char temp = str.charAt(0);
                 int count = 1;
                 for (int j = 1; j < str.length(); j++) {
@@ -36,5 +36,9 @@ public class __38CountAndSay {
             return str;
         }
 
+    }
+
+    public static void main(String[] args) {
+        System.out.println(countAndSay(3));
     }
 }
