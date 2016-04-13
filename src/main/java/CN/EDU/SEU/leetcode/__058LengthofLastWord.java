@@ -7,6 +7,9 @@ package CN.EDU.SEU.leetcode;
 public class __058LengthofLastWord {
 
     public static int lengthOfLastWord(String s) {
+        if (s == null || s.length() == 0 ){
+            return 0;
+        }
         char[] strArrary = s.toCharArray();
         boolean state = false;
         int result = 0;
