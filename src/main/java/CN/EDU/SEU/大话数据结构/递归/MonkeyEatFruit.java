@@ -1,5 +1,6 @@
 package CN.EDU.SEU.大话数据结构.递归;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -19,11 +20,15 @@ public class MonkeyEatFruit {
 
     //递归算法
     public int eat02(int n) {
+        System.out.println("f(" + n + ")压栈");
         if (n == 1) {
+            System.out.println("函数栈达到最大的深度");
+            System.out.println("f(" + n + ")出栈");
             return 1;
         }
-
-        return 2 * eat02(n - 1)  + 2;
+        int num = 2 * eat02(n - 1)  + 2;
+        System.out.println("f(" + n + ")出栈");
+        return num;
     }
 
     public static void main(String[] args) {
@@ -41,6 +46,7 @@ public class MonkeyEatFruit {
     public void test02(){
         int n = 10;
         int num = eat02(n);
-        System.out.println(num);
+        Assert.assertTrue(num == 1534);
+//        System.out.println(num);
     }
 }
