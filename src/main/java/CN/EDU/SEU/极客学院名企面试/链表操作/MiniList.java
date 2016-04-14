@@ -2,12 +2,24 @@ package CN.EDU.SEU.极客学院名企面试.链表操作;
 
 import org.junit.Test;
 
+import java.util.Comparator;
+
 /**
  * 链表的一些简单的操作
  * Created by LCN on 2016/4/14.
  */
 public class MiniList<T> {
     private ListNode<T> head = new ListNode<>(null, null);
+    public Comparator<T> comparator;
+
+    public int compare(T a, T b) {
+        if (comparator != null) {
+            return comparator.compare(a, b);
+        } else {
+            Comparable<T> c = (Comparable<T>) a;
+            return c.compareTo(b);
+        }
+    }
 
     public void arrayToList(T[] array) {
         ListNode<T> p = head;
@@ -65,6 +77,24 @@ public class MiniList<T> {
             p = p.next;
         }
         p.value = value;
+    }
+
+    //时间复杂度为O(N)  空间复杂度为O(1)
+    public T getMax() {
+        if (head.next == null) {
+            return null;
+        }
+
+        ListNode<T> p = head.next;
+        T max = p.value;
+        p = p.next;
+        while (p != null) {
+            if (compare(p.value, max) > 0) {
+                max = p.value;
+            }
+            p = p.next;
+        }
+        return max;
     }
 
     @Test
