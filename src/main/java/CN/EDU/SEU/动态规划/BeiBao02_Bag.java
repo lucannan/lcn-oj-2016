@@ -31,7 +31,7 @@ class Knapsnack {
     public String toString() {
         return "Knapsnack{" +
                 "weight=" + weight +
-                ", value=" + value +
+                ", val=" + value +
                 '}';
     }
 }

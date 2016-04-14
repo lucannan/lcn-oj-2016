@@ -20,24 +20,24 @@ public class BST<Key extends Comparable<Key>, Value> {
     public boolean isEmpty() {
         return size() == 0;
     }
-    // return number of key-value pairs in BST
+    // return number of key-val pairs in BST
     public int size() {
         return size(root);
     }
-    // return number of key-value pairs in BST rooted at x
+    // return number of key-val pairs in BST rooted at x
     private int size(Node x) {
         if (x == null) return 0;
         else return x.N;
     }
     /***********************************************************************
-     * Search BST for given key, and return associated value if found,
+     * Search BST for given key, and return associated val if found,
      * return null if not found
      ***********************************************************************/
-    // does there exist a key-value pair with given key?
+    // does there exist a key-val pair with given key?
     public boolean contains(Key key) {
         return get(key) != null;
     }
-    // return value associated with the given key, or null if no such key exists
+    // return val associated with the given key, or null if no such key exists
     public Value get(Key key) {
         return get(root, key);
     }
@@ -50,8 +50,8 @@ public class BST<Key extends Comparable<Key>, Value> {
         else return x.val;
     }
     /***********************************************************************
-     * Insert key-value pair into BST
-     * If key already exists, update with new value
+     * Insert key-val pair into BST
+     * If key already exists, update with new val
      ***********************************************************************/
     public void put(Key key, Value val) {
         if (val == null) {

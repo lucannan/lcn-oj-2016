@@ -121,7 +121,7 @@ public class Console {
         int count = 0;
         while (scanner.hasNextInt()){
             int value = scanner.nextInt();
-            System.out.println("value" + count +" " + value);
+            System.out.println("val" + count +" " + value);
             count++;
         }
     }
@@ -135,7 +135,7 @@ public class Console {
         int count = 0;
         while (scanner.hasNextInt()){
             int value = scanner.nextInt();
-            System.out.println("value" + count +" " + value);
+            System.out.println("val" + count +" " + value);
             count++;
             sb.append(value);
             sb.append(" ");

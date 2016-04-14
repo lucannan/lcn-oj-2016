@@ -34,7 +34,7 @@ public class MiniList<T> {
     public void printList() {
         ListNode<T> p = head.next;
         while (p != null) {
-            System.out.print(p.value + " ");
+            System.out.print(p.val + " ");
             p = p.next;
         }
         System.out.println();
@@ -59,7 +59,7 @@ public class MiniList<T> {
         }
         ListNode<T> p = pre.next;
         pre.next = p.next;
-        return p.value;
+        return p.val;
     }
 
     public T get(int index) {
@@ -67,7 +67,7 @@ public class MiniList<T> {
         for (int i = 0; i <= index; i++) {
             p = p.next;
         }
-        return p.value;
+        return p.val;
     }
 
 
@@ -76,7 +76,7 @@ public class MiniList<T> {
         for (int i = 0; i <= index; i++) {
             p = p.next;
         }
-        p.value = value;
+        p.val = value;
     }
 
     //时间复杂度为O(N)  空间复杂度为O(1)
@@ -86,11 +86,11 @@ public class MiniList<T> {
         }
 
         ListNode<T> p = head.next;
-        T max = p.value;
+        T max = p.val;
         p = p.next;
         while (p != null) {
-            if (compare(p.value, max) > 0) {
-                max = p.value;
+            if (compare(p.val, max) > 0) {
+                max = p.val;
             }
             p = p.next;
         }

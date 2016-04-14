@@ -55,7 +55,7 @@ public class __234IsPalindrome {
 
         ListNode leftStart = head;
         for (int i = 1; i <= half; i++) {
-            if (leftStart.value != rightStart.value) {
+            if (leftStart.val != rightStart.val) {
                 return false;
             }
 
