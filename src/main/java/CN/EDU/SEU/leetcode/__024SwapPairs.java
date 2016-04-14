@@ -39,7 +39,7 @@ public class __024SwapPairs {
 
     @Test
     public void test01(){
-        Integer[] array = {1,2,3,4,5,6};
+        int[] array = {1,2,3,4,5,6};
         ListNode head = new ListNode().arrayToList(array);
         head = swapPairs(head);
         ListNode.printList(head);

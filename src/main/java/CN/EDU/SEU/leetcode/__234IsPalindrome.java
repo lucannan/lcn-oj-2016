@@ -68,7 +68,7 @@ public class __234IsPalindrome {
 
     @Test
     public void test(){
-        Integer[] array1={0,0};
+        int[] array1={0,0};
         ListNode head=new ListNode().arrayToList(array1);
         System.out.println(isPalindrome(head));
     }

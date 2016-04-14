@@ -4,27 +4,29 @@ import org.junit.Test;
 
 import java.util.Comparator;
 
+import static javafx.scene.input.KeyCode.T;
+
 /**
  * 链表的一些简单的操作
  * Created by LCN on 2016/4/14.
  */
-public class MiniList<T> {
-    private ListNode<T> head = new ListNode<>(null, null);
-    public Comparator<T> comparator;
+public class MiniList {
+    private ListNode head = new ListNode(0,null);
+    public Comparator comparator;
 
-    public int compare(T a, T b) {
+    public int compare(int a, int b) {
         if (comparator != null) {
             return comparator.compare(a, b);
         } else {
-            Comparable<T> c = (Comparable<T>) a;
+            Comparable c = (Comparable) a;
             return c.compareTo(b);
         }
     }
 
-    public void arrayToList(T[] array) {
-        ListNode<T> p = head;
-        for (T t : array) {
-            ListNode<T> node = new ListNode<>(t, null);
+    public void arrayToList(int[] array) {
+        ListNode p = head;
+        for (int t : array) {
+            ListNode node = new ListNode(t, null);
             p.next = node;
             p = node;
         }
@@ -32,7 +34,7 @@ public class MiniList<T> {
 
 
     public void printList() {
-        ListNode<T> p = head.next;
+        ListNode p = head.next;
         while (p != null) {
             System.out.print(p.val + " ");
             p = p.next;
@@ -40,30 +42,30 @@ public class MiniList<T> {
         System.out.println();
     }
 
-    public void insert(int index, T value) {
-        ListNode<T> p = head;
+    public void insert(int index, int value) {
+        ListNode p = head;
         for (int i = 0; i <= index; i++) {
             p = p.next;
         }
 
-        ListNode<T> node = new ListNode<>(value, null);
+        ListNode node = new ListNode(value, null);
         node.next = p.next;
         p.next = node;
     }
 
 
-    public T remove(int index) {
-        ListNode<T> pre = head;
+    public int remove(int index) {
+        ListNode pre = head;
         for (int i = 0; i < index; i++) {
             pre = pre.next;
         }
-        ListNode<T> p = pre.next;
+        ListNode p = pre.next;
         pre.next = p.next;
         return p.val;
     }
 
-    public T get(int index) {
-        ListNode<T> p = head;
+    public int get(int index) {
+        ListNode p = head;
         for (int i = 0; i <= index; i++) {
             p = p.next;
         }
@@ -71,8 +73,8 @@ public class MiniList<T> {
     }
 
 
-    public void set(int index, T value) {
-        ListNode<T> p = head;
+    public void set(int index, int value) {
+        ListNode p = head;
         for (int i = 0; i <= index; i++) {
             p = p.next;
         }
@@ -80,13 +82,13 @@ public class MiniList<T> {
     }
 
     //时间复杂度为O(N)  空间复杂度为O(1)
-    public T getMax() {
+    public int getMax() {
         if (head.next == null) {
-            return null;
+            return Integer.MIN_VALUE;
         }
 
-        ListNode<T> p = head.next;
-        T max = p.val;
+        ListNode p = head.next;
+        int max = p.val;
         p = p.next;
         while (p != null) {
             if (compare(p.val, max) > 0) {
@@ -99,8 +101,8 @@ public class MiniList<T> {
 
     @Test
     public void testMiniList() {
-        MiniList<Integer> list = new MiniList<>();
-        Integer[] array = {1, 2, 3, 4, 5, 6, 7, 8};
+        MiniList list = new MiniList();
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8};
         list.arrayToList(array);
         list.printList();
     }
