@@ -51,8 +51,8 @@ public class __061RoatateLIst {
 
     @Test
     public void test() {
-        Integer[] array1 = {1, 2, 3, 4, 5};
-        ListNode<Integer> head = new ListNode<Integer>().arrayToList(array1);
+        int[] array1 = {1, 2, 3, 4, 5};
+        ListNode head = new ListNode().arrayToList(array1);
         head = rotateRight(head, 3);
         ListNode.printList(head);
     }
