@@ -6,4 +6,5 @@ package CN.EDU.SEU.剑指offer;
  */
 public class Test54 {
 
-//    public static boolean}
+//    public static boolean
+}
