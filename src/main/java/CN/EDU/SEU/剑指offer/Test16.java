@@ -7,12 +7,6 @@ import org.junit.Test;
  * Created by LCN on 2016/4/19.
  */
 public class Test16 {
-    public static class ListNode {
-        int value;
-        ListNode next;
-    }
-
-
     /*
             * 定义一个函数，输入一个链表的头结点，反转该链表并输出反转后链表的头结点。
             *
@@ -42,7 +36,28 @@ public class Test16 {
         return root.next;
     }
 
-
+    public static ListNode reverseList3(ListNode head) {
+        // 创建一个临时结点，当作尾插法的逻辑头结点
+        ListNode root;
+        // 逻辑头结点点的下一个结点为空
+        root = null;
+        // 用于记录要处理的下一个结点
+        ListNode next;
+        // 当前处理的结点不为空
+        while (head != null) {
+            // 记录要处理的下一个结点
+            next = head.next;
+            // 当前结点的下一个结点指向逻辑头结点的下一个结点
+            head.next = root;
+            // 逻辑头结点的下一个结点指向当前处理的结点
+            root = head;
+            // 上面操作完成了一个结点的头插
+            // 当前结点指向下一个要处理的结点
+            head = next;
+        }
+        // 逻辑头结点的下一个结点就是返回后的头结点
+        return root;
+    }
 
     /**
      * 定义一个函数，输入一个链表的头结点，反转该链表并输出反转后链表的头结点。
@@ -80,7 +95,6 @@ public class Test16 {
         return reverseHead;
     }
 
-
     public static void printList(ListNode head) {
         while (head != null) {
             System.out.print(head.value + "->");
@@ -112,7 +126,12 @@ public class Test16 {
         printList(head);
         head = reverseList(head);
         printList(head);
-        head = reverseList2(head);
+        head = reverseList3(head);
         printList(head);
+    }
+
+    public static class ListNode {
+        int value;
+        ListNode next;
     }
 }

@@ -1,35 +1,29 @@
 package CN.EDU.SEU.剑指offer;
 
+import CN.EDU.SEU.几个常用数据结构.Queue;
 import org.junit.Test;
 
 /**
- * 二叉树的镜像
+ * 从上往下打印二叉树
  * Created by LCN on 2016/4/20.
  */
-public class Test19 {
-    /**
-     * 请完成一个函数，输入…个二叉树，该函数输出它的镜像
-     *
-     * @param node 二叉树的根结点
-     */
-    public static void mirror(BinaryTreeNode node) {
-        // 如果当前结点不为空则进行操作
-        if (node != null) {
-            // 下面是交换结点左右两个子树
-            BinaryTreeNode tmp = node.left;
-            node.left = node.right;
-            node.right = tmp;
-            // 对结点的左右两个子树进行处理
-            mirror(node.left);
-            mirror(node.right);
-        }
-    }
+public class Test23 {
+    public static void bfs(BinaryTreeNode root) {
+        if (root != null) {
+            Queue<BinaryTreeNode> queue = new Queue<>();
+            queue.enqueue(root);
 
-    public static void printTree(BinaryTreeNode node) {
-        if (node != null) {
-            printTree(node.left);
-            System.out.print(node.value + " ");
-            printTree(node.right);
+            BinaryTreeNode currNode;
+            while (!queue.isEmpty()) {
+                currNode = queue.dequeue();
+                System.out.print(currNode.value + " ");
+                if (currNode.left != null) {
+                    queue.enqueue(currNode.left);
+                }
+                if (currNode.right != null) {
+                    queue.enqueue(currNode.right);
+                }
+            }
         }
     }
 
@@ -54,10 +48,7 @@ public class Test19 {
         root.right.left.value = 9;
         root.right.right = new BinaryTreeNode();
         root.right.right.value = 11;
-        printTree(root);
-        System.out.println();
-        mirror(root);
-        printTree(root);
+        bfs(root);
         // 1
         // /
         // 3
@@ -78,10 +69,7 @@ public class Test19 {
         root2.left.left.left.left = new BinaryTreeNode();
         root2.left.left.left.left.value = 9;
         System.out.println("\n");
-        printTree(root2);
-        System.out.println();
-        mirror(root2);
-        printTree(root2);
+        bfs(root2);
         // 0
         // \
         // 2
@@ -102,18 +90,22 @@ public class Test19 {
         root3.right.right.right.right = new BinaryTreeNode();
         root3.right.right.right.right.value = 8;
         System.out.println("\n");
-        printTree(root3);
-        System.out.println();
-        mirror(root3);
-        printTree(root3);
+        bfs(root3);
+        // 1
+        BinaryTreeNode root4 = new BinaryTreeNode();
+        root4.value = 1;
+        System.out.println("\n");
+        bfs(root4);
+        // null
+        System.out.println("\n");
+        bfs(null);
     }
 
-    /**
-     * 二叉树的树结点
-     */
     public static class BinaryTreeNode {
         int value;
         BinaryTreeNode left;
         BinaryTreeNode right;
     }
+
+
 }
