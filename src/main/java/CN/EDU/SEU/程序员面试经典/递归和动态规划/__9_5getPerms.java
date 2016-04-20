@@ -7,7 +7,7 @@ import java.util.List;
  * 编写一个方法，确定某字符串的所有排列组合的方法
  * Created by LCN on 2016/3/27.
  */
-public class __9_5GetPerms {
+class __9_5GetPerms {
 
 
     public static List<String> getPerms(String str) {
