@@ -34,6 +34,72 @@ public class MaxSubArray {
     }
 
 
+    /**
+     * 数组中连续子数组和最大
+     *
+     * @param data
+     * @return
+     */
+    public static int maxSubArray2(int[] data) {
+        int maxSum = Integer.MIN_VALUE;
+        int left = 0;
+        int right = 0;
+        for (int i = 0; i < data.length; i++) {
+            int sum = 0;
+            for (int j = i; j < data.length; j++) {
+                sum += data[j];
+
+                if (sum > maxSum) {
+                    maxSum = sum;
+                    left = i;
+                    right = j;
+                }
+            }
+
+        }
+        return maxSum;
+    }
+
+
+    /**
+     * 动态规划解法
+     *
+     * @param data
+     * @return
+     */
+    public static int maxSubArray3(int[] data) {
+        if (data == null) {
+            return 0;
+        }
+        int currentSum = data[0];
+        int maxSum = data[0];
+        int pos = 0;
+
+        int left = 0;
+        int right = 0;
+        for (int i = 1; i < data.length; i++) {
+            currentSum += data[i];
+            if (currentSum < data[i]) {
+                pos = i;
+                currentSum = data[i];
+            }
+            if (currentSum > maxSum) {
+                maxSum = currentSum;
+                left = pos;
+                right = i;
+            }
+        }
+
+        return maxSum;
+    }
+
+    @Test
+    public void test02() {
+        int[] data = {1, 4, -5, 8, 3};
+
+        System.out.println(maxSubArray2(data));
+    }
+
     @Test
     public void test01() {
         int[] data = {2, 3, -2, 4};
