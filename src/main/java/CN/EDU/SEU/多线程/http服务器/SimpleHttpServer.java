@@ -13,7 +13,7 @@ import java.net.Socket;
  */
 public class SimpleHttpServer {
 
-    static String basePath;
+    static String basePath = "F:\\JOB\\JAVA\\JOB\\src\\main\\java\\CN\\EDU\\SEU\\多线程\\http服务器";
 
     static ThreadPool<HttpRequestHandler> threadPool = new DefaultThreadPool<>();
 
@@ -73,23 +73,24 @@ public class SimpleHttpServer {
                     }
                     byte[] array = baos.toByteArray();
                     out.println("HTTP/1.1 200 OK");
-                    out.println("Server:Molly");
+                    out.println("Server: Molly");
                     out.println("Content-Type: image/jpeg");
                     out.println("Content-Length：" + array.length);
                     out.println("");
+                    out.flush();
                     socket.getOutputStream().write(array, 0, array.length);
                 } else {
                     br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
                     out = new PrintWriter(socket.getOutputStream());
                     out.println("HTTP/1.1 200 OK");
-                    out.println("Server:Molly");
+                    out.println("Server: Molly");
                     out.println("Content-Type: text/html; charset=UTF-8");
                     out.println("");
                     while ((line = br.readLine()) != null) {
                         out.println(line);
                     }
+                    out.flush();
                 }
-                out.flush();
             } catch (Exception ex) {
                 out.println("HTTP/1.1 500");
                 out.println("");
