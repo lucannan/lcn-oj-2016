@@ -73,6 +73,8 @@ public class BubbleSort {
         }
     }
 
+
+    //not a real bubble sort
     public static void BubbleSort(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
@@ -86,6 +88,53 @@ public class BubbleSort {
         }
     }
 
+
+    // a real bubble sort
+    public static void bubbleSort2(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = n - 1; j > i; j--) {
+                if (arr[j - 1] > arr[j]) {
+                    int tmp = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = tmp;
+                }
+            }
+        }
+    }
+
+
+    public static void bubbleSort3(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 1; j < n - i; j++) {
+                if (arr[j - 1] > arr[j]) {
+                    int tmp = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = tmp;
+                }
+            }
+        }
+    }
+
+
+    public static void bubbleSort4(int[] arr) {
+        int n = arr.length;
+        boolean flag = true;
+
+        for (int i = 0; i < n - 1 && flag; i++) {
+            flag = false;
+            for (int j = 1; j < n - i; j++) {
+                if (arr[j - 1] > arr[j]) {
+                    int tmp = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = tmp;
+                    flag = true;
+                }
+            }
+        }
+    }
+
     @SuppressWarnings("all")
     public static void main(String[] args) {
         Integer[] a = {7, 8, 9, 10, 6, 4, 3, 7, 5, 3};
@@ -94,7 +143,7 @@ public class BubbleSort {
 
 
         int[] b = {7, 8, 9, 10, 6, 4, 3, 7, 5, 3};
-        BubbleSort.BubbleSort(b);
+        BubbleSort.bubbleSort4(b);
         System.out.println(Arrays.toString(b));
     }
 }

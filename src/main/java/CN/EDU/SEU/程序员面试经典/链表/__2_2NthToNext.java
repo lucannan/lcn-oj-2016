@@ -43,4 +43,18 @@ public class __2_2NthToNext {
 
         return p1;
     }
+
+
+    public static LinkedListNode nthToNext3(LinkedListNode head,int k,Integer integer){
+        if(head == null){
+            return null;
+        }
+
+        LinkedListNode node = nthToNext3(head.next,k,integer);
+        integer++;
+        if (integer == k){
+            return head;
+        }
+        return node;
+    }
 }
