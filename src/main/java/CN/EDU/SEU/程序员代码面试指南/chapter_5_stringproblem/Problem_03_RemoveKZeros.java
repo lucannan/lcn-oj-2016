@@ -1,5 +1,7 @@
 package CN.EDU.SEU.程序员代码面试指南.chapter_5_stringproblem;
 
+import java.math.BigInteger;
+
 public class Problem_03_RemoveKZeros {
 
     public static String removeKZeros(String str, int k) {
@@ -43,6 +45,19 @@ public class Problem_03_RemoveKZeros {
 
         String test5 = "00000000";
         System.out.println(removeKZeros(test5, 5));
+
+        String test6 = "A00B";
+        System.out.println(removeKZeros(test6,2));
+
+        char[] ca = {'\0','1','2','4','\0','5'};
+        System.out.println(String.valueOf(ca));
+
+
+        System.out.println(String.valueOf(ca).equals("1245"));
+
+        System.out.println(String.valueOf(new char[] {'\0'}));
+
+
 
     }
 

@@ -87,6 +87,10 @@ public class Problem_03_AddMinusMultiDivideByBit {
         System.out.println(divide(a, b));
         System.out.println(a / b);
 
+
+        System.out.println(divide(a, b));
+        System.out.println(a / b);
+
     }
 
 }
