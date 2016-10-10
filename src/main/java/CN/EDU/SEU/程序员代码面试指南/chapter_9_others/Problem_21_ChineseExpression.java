@@ -6,7 +6,7 @@ public class Problem_21_ChineseExpression {
         if (num < 1 || num > 9) {
             return "";
         }
-        String[] names = {"һ", "��", "��", "��", "��", "��", "��", "��", "��"};
+        String[] names = {"一", "二", "三", "四", "五", "六", "七", "八", "九"};
         return names[num - 1];
     }
 
@@ -19,9 +19,9 @@ public class Problem_21_ChineseExpression {
         }
         int shi = num / 10;
         if (shi == 1 && (!hasBai)) {
-            return "ʮ" + num1To9(num % 10);
+            return "十" + num1To9(num % 10);
         } else {
-            return num1To9(shi) + "ʮ" + num1To9(num % 10);
+            return num1To9(shi) + "十" + num1To9(num % 10);
         }
     }
 
@@ -32,14 +32,14 @@ public class Problem_21_ChineseExpression {
         if (num < 100) {
             return num1To99(num, false);
         }
-        String res = num1To9(num / 100) + "��";
+        String res = num1To9(num / 100) + "百";
         int rest = num % 100;
         if (rest == 0) {
             return res;
         } else if (rest >= 10) {
             res += num1To99(rest, true);
         } else {
-            res += "��" + num1To9(rest);
+            res += "零" + num1To9(rest);
         }
         return res;
     }
@@ -51,14 +51,14 @@ public class Problem_21_ChineseExpression {
         if (num < 1000) {
             return num1To999(num);
         }
-        String res = num1To9(num / 1000) + "ǧ";
+        String res = num1To9(num / 1000) + "千";
         int rest = num % 1000;
         if (rest == 0) {
             return res;
         } else if (rest >= 100) {
             res += num1To999(rest);
         } else {
-            res += "��" + num1To99(rest, false);
+            res += "零" + num1To99(rest, false);
         }
         return res;
     }
@@ -72,12 +72,12 @@ public class Problem_21_ChineseExpression {
         if (wan == 0) {
             return num1To9999(rest);
         }
-        String res = num1To9999(wan) + "��";
+        String res = num1To9999(wan) + "万";
         if (rest == 0) {
             return res;
         } else {
             if (rest < 1000) {
-                return res + "��" + num1To999(rest);
+                return res + "零" + num1To999(rest);
             } else {
                 return res + num1To9999(rest);
             }
@@ -86,20 +86,20 @@ public class Problem_21_ChineseExpression {
 
     public static String getNumChiExp(int num) {
         if (num == 0) {
-            return "��";
+            return "零";
         }
-        String res = num < 0 ? "��" : "";
+        String res = num < 0 ? "负" : "";
         int yi = Math.abs(num / 100000000);
         int rest = Math.abs((num % 100000000));
         if (yi == 0) {
             return res + num1To99999999(rest);
         }
-        res += num1To9999(yi) + "��";
+        res += num1To9999(yi) + "亿";
         if (rest == 0) {
             return res;
         } else {
             if (rest < 10000000) {
-                return res + "��" + num1To99999999(rest);
+                return res + "零" + num1To99999999(rest);
             } else {
                 return res + num1To99999999(rest);
             }

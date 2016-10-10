@@ -16,7 +16,7 @@ public class Problem_06_PaperFolding {
     }
 
     public static void main(String[] args) {
-        int N = 4;
+        int N = 2;
         printAllFolds(N);
 
     }

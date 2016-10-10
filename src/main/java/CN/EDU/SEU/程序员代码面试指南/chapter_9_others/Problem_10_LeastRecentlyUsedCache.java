@@ -132,7 +132,6 @@ public class Problem_10_LeastRecentlyUsedCache {
             this.nodeKeyMap.remove(removeNode);
             this.keyNodeMap.remove(removeKey);
         }
-
     }
 
 }

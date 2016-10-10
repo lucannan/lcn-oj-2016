@@ -40,8 +40,9 @@ public class Test03 {
                 {4, 7, 10, 13},
                 {6, 8, 11, 15}
         };
-        Assert.assertFalse(find(matrix,7));
-        System.out.println(find(matrix, 7)); // 要查找的数在数组中
+        int[][] b = matrix.clone();
+//        Assert.assertFalse(find(matrix,7));
+        System.out.println(find(matrix, 9)); // 要查找的数在数组中
         System.out.println(find(matrix, 5)); // 要查找的数不在数组中
         System.out.println(find(matrix, 1)); // 要查找的数是数组中最小的数字
         System.out.println(find(matrix, 15)); // 要查找的数是数组中最大的数字

@@ -29,7 +29,7 @@ public class Problem_05_PointInTriangle {
 
     public static boolean isInside2(double x1, double y1, double x2, double y2,
                                     double x3, double y3, double x, double y) {
-        // ��������εĵ㲻����ʱ�����룬�ı�һ��˳��
+        // ????????ε??????????????????????
         if (crossProduct(x3 - x1, y3 - y1, x2 - x1, y2 - y1) >= 0) {
             double tmpx = x2;
             double tmpy = y2;
