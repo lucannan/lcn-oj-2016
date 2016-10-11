@@ -1,6 +1,5 @@
 package CN.EDU.SEU.剑指offer;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 /**

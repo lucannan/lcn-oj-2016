@@ -24,9 +24,9 @@ public class Test07 {
                 }
             }
 
-            if (stack1.isEmpty()) {
-                throw new RuntimeException("No more element.");
-            }
+//            if (stack1.isEmpty()) {
+//                throw new RuntimeException("No more element.");
+//            }
             return (int) stack2.pop();
         }
     }
