@@ -1,8 +1,6 @@
 package CN.EDU.SEU.剑指offer;
 
-import CN.EDU.SEU.极客学院名企面试.链表操作.ListNode;
 import org.junit.Test;
-import org.omg.CORBA.MARSHAL;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,7 +67,7 @@ public class Test51 {
             return -1;
         }
         for (int i = 0; i < number.length; i++) {
-            if (i < 0 || i > number.length - 1) {
+            if ( number[i] < 0 || number[i] > number.length - 1) {
                 return -1;
             }
         }
