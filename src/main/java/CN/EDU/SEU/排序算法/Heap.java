@@ -19,6 +19,14 @@ import java.util.Arrays;
  */
 
 public class Heap {
+
+    /**
+     *一般用数组来表示堆，若根结点存在序号0处， i结点的父结点下标就为(i-1)/2。i结点的左右子结点下标分别为2*i+1和2*i+2。
+     （注：如果根结点是从1开始，则左右孩子结点分别是2i和2i+1。）
+     * @param array
+     * @param parent
+     * @param length
+     */
     public static void HeapAdjust(int[] array, int parent, int length) {
         int temp = array[parent]; // temp保存当前父节点
         int child = 2 * parent + 1; // 先获得左孩子
@@ -110,9 +118,9 @@ public class Heap {
         int[] a = {7, 8, 9, 10, 6, 4, 3, 7, 5,
                 1, 3, 7, 0, 12, 32, 6565, 78, 43,
                 32, 989, 65, 43, 323, 3443, 67768,
-                979, 9, 5, 31,7,432323};
-//        Heap.heapSort(a);
-        Heap.sort(a);
+                979, 9, 5, 31, 7, 432323};
+        Heap.heapSort(a);
+//        Heap.sort(a);
 
         System.out.println(Arrays.toString(a));
 
