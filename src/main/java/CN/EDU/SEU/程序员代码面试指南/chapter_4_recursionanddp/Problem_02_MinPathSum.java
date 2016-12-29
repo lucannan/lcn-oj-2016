@@ -28,10 +28,10 @@ public class Problem_02_MinPathSum {
         if (m == null || m.length == 0 || m[0] == null || m[0].length == 0) {
             return 0;
         }
-        int more = Math.max(m.length, m[0].length); // �����������ϴ���Ǹ�Ϊmore
-        int less = Math.min(m.length, m[0].length); // ������������С���Ǹ�Ϊless
-        boolean rowmore = more == m.length; // �����ǲ��Ǵ��ڵ�������
-        int[] arr = new int[less]; // ��������ĳ��Ƚ�Ϊ�����������е���Сֵ
+        int more = Math.max(m.length, m[0].length);
+        int less = Math.min(m.length, m[0].length);
+        boolean rowmore = more == m.length;
+        int[] arr = new int[less];
         arr[0] = m[0][0];
         for (int i = 1; i < less; i++) {
             arr[i] = arr[i - 1] + (rowmore ? m[0][i] : m[i][0]);

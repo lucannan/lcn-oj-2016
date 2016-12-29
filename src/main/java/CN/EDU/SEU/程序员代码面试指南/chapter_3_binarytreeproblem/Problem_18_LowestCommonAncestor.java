@@ -5,7 +5,7 @@ import java.util.HashSet;
 
 public class Problem_18_LowestCommonAncestor {
 
-    // ԭ����
+    // ?????
     public static Node lowestAncestor(Node head, Node o1, Node o2) {
         if (head == null || head == o1 || head == o2) {
             return head;
@@ -63,13 +63,13 @@ public class Problem_18_LowestCommonAncestor {
         Node o1 = head.left.right;
         Node o2 = head.right.left;
 
-        // ���β�ѯ--ԭ����
+        // ???β??--?????
         System.out.println("o1 : " + o1.value);
         System.out.println("o2 : " + o2.value);
         System.out.println("ancestor : " + lowestAncestor(head, o1, o2).value);
         System.out.println("===============");
 
-        // ����map�󷽱��β�ѯ--��������
+        // ????map????β??--????????
         Record1 record1 = new Record1(head);
         Record2 record2 = new Record2(head);
 
@@ -104,7 +104,7 @@ public class Problem_18_LowestCommonAncestor {
         }
     }
 
-    // ��������--����һ
+    // ????????--?????
     public static class Record1 {
         private HashMap<Node, Node> map;
 
@@ -144,7 +144,7 @@ public class Problem_18_LowestCommonAncestor {
 
     }
 
-    // ��������--������
+    // ????????--??????
     public static class Record2 {
         private HashMap<Node, HashMap<Node, Node>> map;
 

@@ -17,6 +17,7 @@ public class Problem_04_CoinsWay {
             for (int i = 0; arr[index] * i <= aim; i++) {
                 res += process1(arr, index + 1, aim - arr[index] * i);
             }
+
         }
         return res;
     }

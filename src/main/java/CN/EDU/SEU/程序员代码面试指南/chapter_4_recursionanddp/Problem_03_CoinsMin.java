@@ -67,7 +67,7 @@ public class Problem_03_CoinsMin {
         if (arr[0] <= aim) {
             dp[0][arr[0]] = 1;
         }
-        int leftup = 0; // ���Ͻ�ĳ��λ�õ�ֵ
+        int leftup = 0;
         for (int i = 1; i < n; i++) {
             for (int j = 1; j <= aim; j++) {
                 leftup = max;
@@ -93,7 +93,7 @@ public class Problem_03_CoinsMin {
         if (arr[0] <= aim) {
             dp[arr[0]] = 1;
         }
-        int leftup = 0; // ���Ͻ�ĳ��λ�õ�ֵ
+        int leftup = 0;
         for (int i = 1; i < n; i++) {
             for (int j = aim; j > 0; j--) {
                 leftup = max;

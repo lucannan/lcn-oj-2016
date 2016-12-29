@@ -44,7 +44,6 @@ public class Problem_01_FibonacciProblem {
 
     public static int[][] matrixPower(int[][] m, int p) {
         int[][] res = new int[m.length][m[0].length];
-        // �Ȱ�res��Ϊ��λ��������������е�1��
         for (int i = 0; i < res.length; i++) {
             res[i][i] = 1;
         }
