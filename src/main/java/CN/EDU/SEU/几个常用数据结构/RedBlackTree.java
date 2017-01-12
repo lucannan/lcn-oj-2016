@@ -16,6 +16,7 @@ public class RedBlackTree<T> {
         //x、y双指针移动
         while (x != nil) {
             y = x;
+
             if (key < x.key) {
                 x = x.left;
             } else if (key > x.key) {
