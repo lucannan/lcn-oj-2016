@@ -1,6 +1,5 @@
 package CN.EDU.SEU.leetcode;
 
-import leetcode.Solution_19.ListNode;
 
 public class Solution_21 {
 	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
